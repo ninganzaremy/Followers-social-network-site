@@ -33,7 +33,7 @@
     "@adonisjs/session": "^1.0.27",
     "@adonisjs/shield": "^1.0.8",
     "mysql": "^2.18.1",
-    "axios": "^0.16.1",
+    "axios": "^0.19.2",
     "babel-core": "^6.24.1",
     "babel-loader": "^6.4.1",
     "babel-polyfill": "^6.0.16",
