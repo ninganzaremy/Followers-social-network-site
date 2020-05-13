@@ -7,17 +7,71 @@ body {
   justify-content: center;
   font-family: 'Roboto', sans-serif;
   min-height: 100vh;
-  background: rgba(132,162,233,1);
-  background: -moz-linear-gradient(-45deg, rgba(132,162,233,1) 0%, rgba(223,254,230,1) 100%);
-  background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(132,162,233,1)), color-stop(100%, rgba(223,254,230,1)));
-  background: -webkit-linear-gradient(-45deg, rgba(132,162,233,1) 0%, rgba(223,254,230,1) 100%);
-  background: -o-linear-gradient(-45deg, rgba(132,162,233,1) 0%, rgba(223,254,230,1) 100%);
-  background: -ms-linear-gradient(-45deg, rgba(132,162,233,1) 0%, rgba(223,254,230,1) 100%);
-  background: linear-gradient(135deg, rgba(132,162,233,1) 0%, rgba(223,254,230,1) 100%);
+  background: rgba(23,35,104,1);
+background: -moz-linear-gradient(-45deg, rgba(23,35,104,1) 0%, rgba(226,73,175,1) 100%);
+background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(23,35,104,1)), color-stop(100%, rgba(226,73,175,1)));
+background: -webkit-linear-gradient(-45deg, rgba(23,35,104,1) 0%, rgba(226,73,175,1) 100%);
+background: -o-linear-gradient(-45deg, rgba(23,35,104,1) 0%, rgba(226,73,175,1) 100%);
+background: -ms-linear-gradient(-45deg, rgba(23,35,104,1) 0%, rgba(226,73,175,1) 100%);
+background: linear-gradient(135deg, rgba(23,35,104,1) 0%, rgba(226,73,175,1) 100%);
 }
 .app-container{
-  width: 80%;
+  width: 100%;
+  max-width: 1300px;
   background: #fff;
-  min-height: calc(100vh - 20vh);
+  min-height:calc(100vh - 15vh);
   border-radius: 5px;
+  display: grid;
+  grid-template-columns: 15% 65% 20%;
+
+  #left-menu{
+    border-right: 3px solid #e6e9ef;
+    .account-dropdown{
+      display: grid;
+      grid-template-columns:1fr 3fr 1fr;
+      padding: 15px;
+
+
+      .logo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .fab{
+          font-size: 2rem;
+        }
+      }
+      .name{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .icon{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .fa-chevron-down{
+          font-size: 0.8rem;
+        }
+      }
+    }
+
+  }
+}
+.groups{
+  padding: 15px;
+  .group{
+    .title{
+      padding: 10px 0;
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    ul{
+      li{
+        color: #818387;
+        padding: 10px 0;
+        font-size: 0.8rem;
+      }
+    }
+  }
 }
