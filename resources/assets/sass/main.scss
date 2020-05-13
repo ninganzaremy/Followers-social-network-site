@@ -2,6 +2,22 @@
 @import "reset";
 
 body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: 'Roboto', sans-serif;
-  background: purple;
+  min-height: 100vh;
+  background: rgba(132,162,233,1);
+  background: -moz-linear-gradient(-45deg, rgba(132,162,233,1) 0%, rgba(223,254,230,1) 100%);
+  background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(132,162,233,1)), color-stop(100%, rgba(223,254,230,1)));
+  background: -webkit-linear-gradient(-45deg, rgba(132,162,233,1) 0%, rgba(223,254,230,1) 100%);
+  background: -o-linear-gradient(-45deg, rgba(132,162,233,1) 0%, rgba(223,254,230,1) 100%);
+  background: -ms-linear-gradient(-45deg, rgba(132,162,233,1) 0%, rgba(223,254,230,1) 100%);
+  background: linear-gradient(135deg, rgba(132,162,233,1) 0%, rgba(223,254,230,1) 100%);
+}
+.app-container{
+  width: 80%;
+  background: #fff;
+  min-height: calc(100vh - 20vh);
+  border-radius: 5px;
 }
