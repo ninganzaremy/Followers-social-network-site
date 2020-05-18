@@ -24,6 +24,7 @@ background: linear-gradient(135deg, rgba(23,35,104,1) 0%, rgba(226,73,175,1) 100
   max-width: 1400px;
   background: #fff;
   min-height:calc(100vh - 15vh);
+  overflow: hidden;
   border-radius: 5px;
   display: grid;
   grid-template-columns: 15% 65% 20%;
@@ -85,6 +86,14 @@ background: linear-gradient(135deg, rgba(23,35,104,1) 0%, rgba(226,73,175,1) 100
 
 #content-container{
   overflow: hidden;
+  height: 900px;
+  .content-area{
+    box-sizing: content-box;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding: 0 15px 0 8px;
+  }
   .search-header{
     position: relative;
     padding: 10px;
@@ -201,6 +210,184 @@ background: linear-gradient(135deg, rgba(23,35,104,1) 0%, rgba(226,73,175,1) 100
            }
         }
       }
+    }
+
+    #updates{
+      .update-container{
+        max-width: 630px;
+        width: 100%;
+        margin: 0 auto;
+        .author-info{
+          display: flex;
+          padding: 0 15px;
+          .user-img{
+            display: inline-block;
+            background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR26s0vTtYuYnlmRRMTey01TEX7NKXLBUqPYl1e1MW3bVh4rdl7-E6mXc_XnA&s");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            border: 5px solid white;
+
+          }
+          .info{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: $ptext;
+            a{
+              color: $htext;
+              text-decoration: none;
+              font-weight: 700;
+              margin:0 10px;
+            }
+          }
+        }
+        .media{
+          position: relative;
+          .image{
+            position: relative;
+            z-index: 2;
+           margin-bottom:25px 0 50px;
+
+          height: 300px;
+          width: 100%;
+          border-radius: 5px;
+          -webkit-box-shadow: 0px 32px 48px -21px rgba(59,71,99,1);
+          -moz-box-shadow: 0px 32px 48px -21px rgba(59,71,99,1);
+          box-shadow: 0px 32px 48px -21px rgba(59,71,99,1);
+           }
+        }
+        .padding-container{
+          padding: 0 15px;
+        }
+        .grey-container{
+          z-index: 1;
+          padding: 50px 20px;
+          position: relative;
+          top: -50px;
+          background: $backgroundContent;
+          -webkit-box-shadow: 0px 21px 48px -21px rgba(59,71,99,0.5);
+          -moz-box-shadow: 0px 21px 48px -21px rgba(59,71,99,0.5);
+          box-shadow: 0px 21px 48px -21px rgba(59,71,99,0.5);
+          .update-info{
+            h3{
+              text-transform: uppercase;
+              font-weight: 600;
+              color: $htext;
+              line-height: 1.5;
+              font-size: 1.5rem;
+              margin-bottom: 1rem;
+            }
+            p{
+              color: $htext;
+              line-height: 2;
+              font-size: 0.8rem;
+              margin-bottom: 1rem;
+            }
+          }
+          .update-stats{
+            display: flex;
+            padding: 15px 0;
+            border-top: 2px solid $border;
+            border-bottom: 2px solid $border;
+            margin-bottom: 30px;
+            .icon-section{
+              position: relative;
+              top: -1px;
+
+              .like-circle{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 20px;
+                width: 20px;
+                font-size: 0.6rem;
+                color: white;
+                border-radius: 50%;
+                background: linear-gradient(to bottom, #32adff 0%, #0178ff 100%);
+                .fa-thumbs-up{
+                  position: relative;
+                  top: -1px;
+                }
+              }
+            }
+            .other-users{
+              width: 70%;
+              display: flex;
+              align-items: center;
+              justify-content: flex-start;
+              color: $veryLightText;
+              font-size: 0.8rem;
+            }
+            .comment-stats{
+              display: flex;
+              width: 30%;
+              color: $veryLightText;
+              justify-content: flex-end;
+              align-items: center;
+              font-size: 0.8rem;
+            }
+          }
+          .compose-comment{
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            .fa-comment{
+              z-index: 1;
+              position: absolute;
+              bottom: 0;
+              font-size: 2rem;
+              color: white;
+            }
+            textarea{
+              position: relative;
+              z-index: 2;
+              border: none;
+              height: 40px;
+              width: 100%;
+              border-radius: 20px;
+            }
+            .buttons{
+              display: flex;
+            }
+            .repost-btn{
+              height: 40px;
+              width: 40px;
+              background: white;
+              box-shadow: $boxshadowbtns;
+              color: $darksideBlue;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              margin-left: 20px;
+            }
+            .like-btn{
+              height: 40px;
+              width: 40px;
+              background: linear-gradient(to bottom, #32adff 0%, #0178ff 100%);
+              box-shadow: $boxshadowbtns;
+              color: white;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              margin-left: 20px;
+              .fa-thumbs-up{
+                position: relative;
+                top: -2px;
+              }
+            }
+
+          }
+        }
+
+      }
+
     }
     #messenger{
       background: #0178FF;
