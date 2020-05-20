@@ -1,41 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>SEMANetwork</title>
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
-  <link rel="stylesheet" href="/css/main.css">
-</head>
-<body>
-  <div class="app-container
-  welcome-page
-  " style="background: url('https://architecturebeast.com/wp-content/uploads/2014/06/The_Most_Minimalist_House_Ever_Designed_featured_on_architecture_beast_33.jpg');background-size:cover; background-position:center center; background-repeat: none">
-     <div class="welcome-message">
-       <h1>Welcome to SEMA</h1>
-       <h3>The dream Social Network</h3>
-     </div>
-     <div class="home-container">
-       <div class="box">
+@layout('layouts/empty')
 
-         <div class="login-buttons">
-           <div class="button google-btn">
-             Goggle
-           </div>
-           <div class="button facebook-btn">
-             Facebook
-           </div>
-           <hr>
-           <div class=" button email-btn">
-             Email
-           </div>
+@section('title')
+  SEMA - Social Network
+@endsection
 
-         </div>
-       </div>
+@section('current-class')
 
-     </div>
+ welcome-page
+
+@endsection
+
+@section('custom-style-app-container')
+   background:
+   url('https://architecturebeast.com/wp-content/uploads/2014/06/The_Most_Minimalist_House_Ever_Designed_featured_on_architecture_beast_33.jpg');background-size:cover; background-position:center center; background-repeat: none;
+@endsection
+
+
+@section('content')
+  <div class="welcome-message">
+    <h1>Welcome to SEMA</h1>
+    <h3>The dream Social Network</h3>
+  </div>
+  <div class="home-container">
+    <div class="box">
+
+      <div class="login-buttons">
+        <div class="button google-btn">
+          Goggle
+        </div>
+        <div class="button facebook-btn">
+          Facebook
+        </div>
+        <hr>
+        <div class=" button email-btn">
+          Email
+        </div>
+
+      </div>
+    </div>
 
   </div>
-  <script src="/js/components/vendor.js"></script>
-  <script src="/js/components/firstComp.js"></script>
-</body>
-</html>
+@endsection

@@ -1,0 +1,46 @@
+@layout('layouts/empty')
+
+@section('title')
+  SEMA - Register
+@endsection
+
+@section('current-class')
+
+ register-page
+
+@endsection
+
+@section('custom-style-app-container')
+
+@endsection
+
+@section('content')
+<div class="container">
+    <div class="register-form">
+      <h1>Sema</h1>
+      <form class="" action="/register" method="POST" class="default-form">
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" name="email" value="" class="text">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" name="password" value="" class="text">
+        </div>
+        <div class="form-group">
+          <label for="confirm_password">Confirm Password</label>
+          <input type="password" name="confirm_password" value="" class="text">
+        </div>
+        <div class="form-group">
+          <button type="submit">Register</button>
+        </div>
+        <hr>
+        <a href="/login">I remember my info, let me login</a>
+      </form>
+
+    </div>
+</div>
+<div class="side-image">
+
+</div>
+@endsection

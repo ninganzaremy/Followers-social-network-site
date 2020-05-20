@@ -20,3 +20,8 @@ const Route = use('Route')
 Route.get('/', 'PageController.welcome')
 
 Route.get('/home', 'PageController.home')
+
+//Authentication
+Route.get('/register', 'AuthController.register')
+Route.get('/login', 'AuthController.login')
+Route.get('/forgotpassword', 'AuthController.forgotPassword')
