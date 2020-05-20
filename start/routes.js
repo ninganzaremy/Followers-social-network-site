@@ -24,4 +24,4 @@ Route.get('/home', 'PageController.home')
 //Authentication
 Route.get('/register', 'AuthController.register')
 Route.get('/login', 'AuthController.login')
-Route.get('/forgotpassword', 'AuthController.forgotPassword')
+Route.get('/forgot-password', 'AuthController.forgotPassword')
