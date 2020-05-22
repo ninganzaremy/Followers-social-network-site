@@ -34,7 +34,7 @@ class AuthController {
           return `error , there is a problem with email.`
         } else{
 
-            //save a user to databate
+          //save a user to databate
 
           try {
             let newUser = await User.create({
@@ -59,8 +59,8 @@ class AuthController {
         }
 
    }else {
+           //show errors if passwords don't match
 
-     //show errors if passwords don't match
      session
        .withErrors([
          {field: 'password', message:'you need to confirm password'},
@@ -68,12 +68,10 @@ class AuthController {
        ])
        .flashExcept(['password'])
      return response.redirect('back')
-
      return 'password do not match';
    }
 
  }
-
 
 
   async login({response, request, view}){
@@ -84,6 +82,18 @@ class AuthController {
     return view.render('auth/forgotPassword')
 
   }
+  async logout({response, request, view,auth}){
+    try {
+      await auth.logout()
+      return response.redirect('/')
+    } catch (error) {
+      console.log(error)
+      return 'error, could not logout'
+    }
+
+
+  }
+
 }
 
 module.exports = AuthController
