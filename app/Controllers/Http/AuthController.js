@@ -33,11 +33,17 @@ class AuthController {
           return response.redirect('back')
           return `error , there is a problem with email.`
         } else{
+
+            //save a user to databate
+
           try {
             let newUser = await User.create({
               email: request.input('email'),
               password: request.input('password')})
           } catch (error) {
+
+            //show errors if problem is with database
+
             console.log('error')
             session
               .withErrors([
@@ -46,13 +52,15 @@ class AuthController {
               ])
               .flashExcept(['password'])
             return response.redirect('back')
-            
+
           }
+          session.flash({notification: 'welcome to Sema'})
+          return response.redirect('/home')
         }
 
-          return 'VARIDATION PASSED'
-
    }else {
+
+     //show errors if passwords don't match
      session
        .withErrors([
          {field: 'password', message:'you need to confirm password'},
