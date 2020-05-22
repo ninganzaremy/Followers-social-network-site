@@ -68,6 +68,24 @@ body {
     font-size: 1.2rem;
   }
   .default-form{}
+    .error-box{
+      display: none;
+      background: red;
+      color: white;
+      padding:15px;
+      margin-bottom: 1rem;
+      text-align: center;
+      text-transform: uppercase;
+      &.active{
+        display: block;
+      }
+    }
+    .form-group{
+      & > .error{
+        border:1px solid red;
+      }
+    }
+
       button{
         width: 100%;
         min-width: 200px;

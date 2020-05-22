@@ -20,17 +20,44 @@
       <h1>Sema</h1>
       <form class="" action="/register" method="post" class="default-form">
         {{csrfField()}}
+        <div class="error-box
+          @if(hasErrorFor('email') || hasErrorFor('password'))
+           active
+          @endif
+          ">
+          @if(hasErrorFor('email'))
+            {{getErrorFor('email')}}
+          @endif
+          @if(hasErrorFor('password'))
+            {{getErrorFor('password')}}
+          @endif
+          @if(hasErrorFor('database'))
+            {{getErrorFor('database')}}
+          @endif
+        </div>
         <div class="form-group">
           <label for="email">Email:</label>
-          <input type="email" name="email" value="" class="text">
+          <input type="email" name="email" value="" class="text
+          @if(hasErrorFor('email'))
+            error
+          @endif
+          ">
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" name="password" value="" class="text">
+          <input type="password" name="password" value="" class="text
+          @if(hasErrorFor('password'))
+            error
+          @endif
+          ">
         </div>
         <div class="form-group">
           <label for="confirm_password">Confirm Password</label>
-          <input type="password" name="confirm_password" value="" class="text">
+          <input type="password" name="confirm_password" value="" class="text
+          @if(hasErrorFor('confirm_password'))
+           error
+          @endif
+          ">
         </div>
         <div class="form-group">
           <button type="submit">Register</button>

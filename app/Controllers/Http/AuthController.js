@@ -26,11 +26,11 @@ class AuthController {
      //check if it fails validation
 
         if (validation.fails()) {
-          // session
-          //   .withErrors(validation.messages())
-          //   .flashExcept(['password'])
-          //
-          // return response.redirect('back')
+          session
+            .withErrors(validation.messages())
+            .flashExcept(['password'])
+
+          return response.redirect('back')
           return `error , there is a problem with email.`
         } else{
           try {
@@ -38,15 +38,30 @@ class AuthController {
               email: request.input('email'),
               password: request.input('password')})
           } catch (error) {
-            console.log('console.error();')
-            return 'problems with database'
+            console.log('error')
+            session
+              .withErrors([
+                {field: 'database', message:'Problem with database try again'}
+
+              ])
+              .flashExcept(['password'])
+            return response.redirect('back')
+            
           }
         }
 
           return 'VARIDATION PASSED'
 
    }else {
-     return 'PASSWORD DO NOT MATCH';
+     session
+       .withErrors([
+         {field: 'password', message:'you need to confirm password'},
+         {field: 'confirm_password', message:'you need to confirm password'}
+       ])
+       .flashExcept(['password'])
+     return response.redirect('back')
+
+     return 'password do not match';
    }
 
  }
