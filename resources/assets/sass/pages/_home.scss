@@ -35,10 +35,19 @@
           font-size: 0.8rem;
         }
       }
+
     }
 
     .groups {
       padding: 15px;
+      .logout{
+        background: #dd4b39;
+        color: #fff;
+        text-decoration: none;
+        margin-left: 3rem;
+        padding: 5px;
+
+      }
 
       .group {
         .title {
