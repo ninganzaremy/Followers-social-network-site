@@ -23,15 +23,18 @@ body {
   background: -ms-linear-gradient(-45deg, rgba(23,35,104,1) 0%, rgba(226,73,175,1) 100%);
   background: linear-gradient(135deg, rgba(23,35,104,1) 0%, rgba(226,73,175,1) 100%);
 }
+#app{
+  width: 100%;
+}
 
 .app-container {
   overflow: hidden;
   width: 100%;
   max-width: 1200px;
   background: #fff;
-  // min-height:calc(100vh - 15vh);
   height: 800px;
   border-radius: 5px;
+  margin: 0 auto;
 }
 
 button:focus,
