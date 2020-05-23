@@ -1,5 +1,5 @@
 {
-  "name": "Followers-socio-network",
+  "name": "Sema-Social-network",
   "version": "4.1.0",
   "adonis-version": "4.1.0",
   "description": "The fullstack application boilerplate for Adonisjs",
@@ -16,7 +16,7 @@
   },
   "keywords": [
     "adonisjs",
-    "adonis-app"
+    "Sema"
   ],
   "author": "",
   "license": "UNLICENSED",
