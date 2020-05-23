@@ -16,7 +16,7 @@ module.exports = {
   |
   */
 
-  name: Env.get('APP_NAME', 'AdonisJs'),
+  name: Env.get('SEMA', 'AdonisJs'),
 
   /*
   |--------------------------------------------------------------------------
@@ -201,7 +201,7 @@ module.exports = {
     */
     console: {
       driver: 'console',
-      name: 'adonis-app',
+      name: 'Sema',
       level: 'info'
     },
 
@@ -218,7 +218,7 @@ module.exports = {
     */
     file: {
       driver: 'file',
-      name: 'adonis-app',
+      name: 'Sema',
       filename: 'adonis.log',
       level: 'info'
     }
