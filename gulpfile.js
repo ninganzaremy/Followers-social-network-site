@@ -11,6 +11,7 @@ var exec = require('child_process').exec;
 gulp.task('default', ['styles', 'webpack', 'browser-sync'], () => {
   gulp.watch('./resources/assets/sass/**/*', ['styles'])
   gulp.watch('./app/**/*', ['webpack']);
+  gulp.watch('./start/**/*', ['webpack']);  
   gulp.watch('./resources/assets/js/**/*', ['webpack'])
   gulp.watch(['./public/**/*', './public/*', '!public/js/**/.#*js', '!public/css/**/.#*css,',
 '/.resources/views/*','./resources/views/**/*']).on('change', reload)
