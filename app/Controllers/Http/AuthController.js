@@ -78,11 +78,61 @@ class AuthController {
     return view.render('auth/login')
 
   }
+  async loginUser({response, request, view, auth, session}){
+
+    //capture the data from the form
+    const postData = request.post()
+
+    //find the user in the database by their Email
+    const user = await User.query()
+      .where('email', postData.email)
+      .first()
+    if (user){
+    //Verify the password
+      const passwordVerified = await Hash.verify(
+        postData.password,
+        user.password
+      )
+      if (passwordVerified) {
+
+        //login the user
+
+        await auth.login(user)
+        session.flash({notification: 'welcome to Sema'})
+        return response.redirect('/home')
+      }else {
+        //password incorrect
+
+        session
+          .withErrors([
+            {field: 'password', message:`Incorrect Password`}
+
+          ])
+          .flashExcept(['password'])
+        return response.redirect('back')
+
+      }
+
+    }else{
+      //can't find user with tha email
+      session
+        .withErrors([
+          {field: 'email', message:`can't find the user with that email`}
+
+        ])
+        .flashExcept(['password'])
+      return response.redirect('back')
+
+    }
+
+  }
+
+
   async forgotPassword({response, request, view}){
     return view.render('auth/forgotPassword')
 
   }
-  async logout({response, request, view,auth}){
+  async logout({response, request, view, auth}){
     try {
       await auth.logout()
       return response.redirect('/')

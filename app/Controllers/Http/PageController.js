@@ -2,6 +2,7 @@
 
 class PageController {
   async home({response, request, view, auth}){
+    
     return view.render('pages/home')
   }
 
