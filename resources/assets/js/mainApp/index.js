@@ -6,19 +6,13 @@ import Messenger from './components/Messenger'
 import SearchHeader from './components/SearchHeader'
 import ComposeSection from './components/ComposeSection'
 import Posts from './components/Posts'
+import LoadingComp from './components/LoadingComp'
 
 class Layout extends Component {
   constructor() {
     super();
     this.state = {
       name: "Remy",
-      initialData:{
-        name:'joe',
-        initialData:{
-          first_name :'Remy',
-          last_name: 'N'
-        }
-      }
     };
   }
   componentWillMount(){
@@ -43,15 +37,13 @@ class Layout extends Component {
   }
 
 
-
-
-
   clickedBtn = () => {
     console.log("swag");
   };
   render() {
     return (<div className="app-container home-page">
-        <LeftMenu initialData={this.state.initialData}/>
+        <LoadingComp  initialData={(this.state.initialData == undefined) ? 'loading' : this.state.initialData}/>
+        <LeftMenu initialData={(this.state.initialData == undefined) ? 'loading' : this.state.initialData}/>
         <section id="content-container">
         <SearchHeader />
           <div className="content-area">
