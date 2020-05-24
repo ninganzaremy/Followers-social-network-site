@@ -1,0 +1,17 @@
+
+# Node modules
+node_modules
+
+# Environment variables
+.env
+
+
+
+# VSCode & Webstorm history directories
+.babelrc
+.env.example
+webpack.config.js
+.gitignore
+.editorconfig
+ace
+gulpfile.js
