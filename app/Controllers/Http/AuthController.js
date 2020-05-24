@@ -46,7 +46,7 @@ class AuthController {
           return response.redirect("back");
         }
         session.flash({ notification: "welcome to Sema" });
-        return response.redirect("/home");
+        return response.redirect("/");
       }
     } else {
       //show errors if passwords don't match
@@ -85,7 +85,7 @@ class AuthController {
 
         await auth.login(user);
         session.flash({ notification: "welcome to Sema" });
-        return response.redirect("/home");
+        return response.redirect("/");
       } else {
         //password incorrect
 
