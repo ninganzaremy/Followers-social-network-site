@@ -10,8 +10,5 @@ node_modules
 # VSCode & Webstorm history directories
 .babelrc
 .env.example
-webpack.config.js
-.gitignore
 .editorconfig
 ace
-gulpfile.js
