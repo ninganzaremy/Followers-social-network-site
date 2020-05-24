@@ -20,7 +20,13 @@ var _reactDom = __webpack_require__(41);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _axios = __webpack_require__(151);
+
+var _axios2 = _interopRequireDefault(_axios);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -32,13 +38,48 @@ var ComposeSection = function (_Component) {
   _inherits(ComposeSection, _Component);
 
   function ComposeSection() {
+    var _this2 = this;
+
     _classCallCheck(this, ComposeSection);
 
     var _this = _possibleConstructorReturn(this, (ComposeSection.__proto__ || Object.getPrototypeOf(ComposeSection)).call(this));
 
-    _this.clickedBtn = function () {
-      console.log("swag");
-    };
+    _this.submitForm = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+      var post;
+      return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.next = 3;
+              return _axios2.default.post('/api/post', {
+                content: 'Hey i got a job',
+                user_id: 1,
+                type: 'text'
+
+              });
+
+            case 3:
+              post = _context.sent;
+
+              console.log(post);
+
+              _context.next = 10;
+              break;
+
+            case 7:
+              _context.prev = 7;
+              _context.t0 = _context["catch"](0);
+
+              console.log(_context.t0);
+
+            case 10:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, _this2, [[0, 7]]);
+    }));
 
     _this.state = {
       name: "Remy"
@@ -69,7 +110,7 @@ var ComposeSection = function (_Component) {
           ),
           _react2.default.createElement(
             "div",
-            { className: " button send-btn" },
+            { className: " button send-btn", onClick: this.submitForm },
             _react2.default.createElement("i", { className: "fas fa-paper-plane" })
           )
         )
@@ -1358,7 +1399,7 @@ var _reactDom = __webpack_require__(41);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _axios = __webpack_require__(239);
+var _axios = __webpack_require__(151);
 
 var _axios2 = _interopRequireDefault(_axios);
 
