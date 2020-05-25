@@ -1259,8 +1259,27 @@ var Profile = function (_Component) {
     value: function render() {
       return _react2.default.createElement(
         "div",
-        { className: "content-area" },
-        "This is the user profile"
+        { className: "content-area profile-page" },
+        _react2.default.createElement(
+          "div",
+          { className: "user-img" },
+          _react2.default.createElement("img", { src: "" }),
+          " "
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "info" },
+          _react2.default.createElement(
+            "h1",
+            null,
+            " Remy Ninga"
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "follow-btn" },
+            "Follow"
+          )
+        )
       );
     }
   }]);
@@ -1530,7 +1549,7 @@ var Layout = function (_Component) {
                 return _react2.default.createElement(_Home2.default, { routeProps: props,
                   initialData: _this2.state.initialData == undefined ? 'loading' : _this2.state.initialData });
               } }),
-            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/profile", component: function component(props) {
+            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/profile/:id", component: function component(props) {
                 return _react2.default.createElement(_Profile2.default, { routeProps: props,
                   initialData: _this2.state.initialData == undefined ? 'loading' : _this2.state.initialData });
               } })
