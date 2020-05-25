@@ -2,8 +2,11 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   .user-img{
-    background: black;
-    img{}
+    img{
+      // border-radius: 50%;
+      max-height: 400px;
+      max-width: 300px;
+    }
   }
   .info{
     padding: 20px;
