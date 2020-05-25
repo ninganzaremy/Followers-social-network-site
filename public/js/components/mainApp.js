@@ -961,21 +961,23 @@ var Posts = function (_Component) {
 
     _this.showLatestPosts = function () {
       if (_this.props.initialData.latestPosts != undefined) {
-        return _this.props.initialData.latestPosts.map(function (post) {
+        return _this.props.initialData.latestPosts.map(function (item) {
+          var post = item.posts;
+          var user = item.users;
           return _react2.default.createElement(
             "div",
             { className: "update-container" },
             _react2.default.createElement(
               "div",
               { className: "author-info" },
-              _react2.default.createElement("a", { href: "#", className: "user-img", style: { backgroundImage: "url('" + post.profile_img + "')" } }),
+              _react2.default.createElement("a", { href: "#", className: "user-img", style: { backgroundImage: "url('" + user.profile_img + "')" } }),
               _react2.default.createElement(
                 "div",
                 { className: "info" },
                 _react2.default.createElement(
                   "a",
                   { href: "/profile" },
-                  post.first_name + " " + post.last_name,
+                  user.first_name + " " + user.last_name,
                   " "
                 ),
                 " shared a ",
