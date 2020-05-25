@@ -237,6 +237,7 @@
           justify-content: center;
           color: $htext;
           box-shadow: $boxshadowbtns;
+          cursor: pointer;
 
           &.send-btn {
             color: white;
@@ -247,6 +248,7 @@
             background: -o-linear-gradient(top, rgba(50,173,255,1) 0%, rgba(1,120,255,1) 100%);
             background: -ms-linear-gradient(top, rgba(50,173,255,1) 0%, rgba(1,120,255,1) 100%);
             background: linear-gradient(to bottom, rgba(50,173,255,1) 0%, rgba(1,120,255,1) 100%);
+
           }
 
           .fa-paper-plane {
@@ -427,6 +429,7 @@
             justify-content: space-between;
             position: relative;
 
+
             .fa-comment {
               z-index: 1;
               position: absolute;
@@ -442,6 +445,8 @@
               height: 40px;
               width: 100%;
               border-radius: 20px;
+
+
             }
 
             .buttons {
