@@ -34,3 +34,6 @@ Route.get('/api/initialApp', 'ApiController.initialApp')
 Route.post('/api/post', 'PostController.store')
 Route.post('/api/post/:id', 'PostController.update')
 Route.get('/api/post:id/delete', 'PostController.destroy')
+
+
+Route.any('*', ({ view }) => view.render('pages/react'))

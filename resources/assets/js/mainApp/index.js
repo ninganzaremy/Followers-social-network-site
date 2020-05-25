@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import{
+  BrowserRouter as Router,
+  Route,
+  NavLink
+} from 'react-router-dom'
 import axios from "axios";
+import Home from "./components/Home";
+import Profile from "./components/Profile";
 import LeftMenu from "./components/LeftMenu";
 import Messenger from "./components/Messenger";
 import SearchHeader from "./components/SearchHeader";
@@ -42,6 +49,7 @@ class Layout extends Component {
   };
   render() {
     return (
+      <Router>
       <div className="app-container home-page">
         <LoadingComp
           initialData={
@@ -59,23 +67,16 @@ class Layout extends Component {
         />
         <section id="content-container">
           <SearchHeader />
-          <div className="content-area">
-            <ComposeSection
-              initialData={
-              (  this.state.initialData == undefined)
-                  ? "loading"
-                  : this.state.initialData
-              }
-            />
-            <Posts initialData={
-              (this.state.initialData == undefined)
-                ? "loading"
-                : this.state.initialData
-            } />
-          </div>
+          <Route exact path ="/" component={(props) => <Home routeProps ={props}
+          initialData={(this.state.initialData ==undefined) ? 'loading' : this.state.initialData} />} />
+
+          <Route exact path ="/profile" component={(props) => <Profile routeProps ={props}
+          initialData={(this.state.initialData ==undefined) ? 'loading' : this.state.initialData} />} />
+
         </section>
         <Messenger />
       </div>
+      </Router>
     );
   }
 }

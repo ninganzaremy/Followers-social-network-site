@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 240:
+/***/ 109:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12,15 +12,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(40);
+var _react = __webpack_require__(18);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(41);
+var _reactDom = __webpack_require__(29);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _axios = __webpack_require__(151);
+var _axios = __webpack_require__(85);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -141,7 +141,7 @@ var app = document.getElementById("app");
 
 /***/ }),
 
-/***/ 241:
+/***/ 110:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -153,11 +153,279 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(40);
+var _react = __webpack_require__(18);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(41);
+var _reactDom = __webpack_require__(29);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Posts = function (_Component) {
+  _inherits(Posts, _Component);
+
+  function Posts() {
+    _classCallCheck(this, Posts);
+
+    var _this = _possibleConstructorReturn(this, (Posts.__proto__ || Object.getPrototypeOf(Posts)).call(this));
+
+    _this.clickedBtn = function () {
+      console.log("swag");
+    };
+
+    _this.showLatestPosts = function () {
+      if (_this.props.initialData.latestPosts != undefined) {
+        return _this.props.initialData.latestPosts.map(function (item, index) {
+          var post = item.posts;
+          var user = item.users;
+          return _react2.default.createElement(
+            "div",
+            { className: "update-container", key: index },
+            _react2.default.createElement(
+              "div",
+              { className: "author-info" },
+              _react2.default.createElement("a", { href: "#", className: "user-img", style: { backgroundImage: "url('" + user.profile_img + "')" } }),
+              _react2.default.createElement(
+                "div",
+                { className: "info" },
+                _react2.default.createElement(
+                  "a",
+                  { href: "/profile" },
+                  user.first_name + " " + user.last_name,
+                  " "
+                ),
+                " shared a ",
+                _react2.default.createElement(
+                  "a",
+                  { href: "#" },
+                  " ",
+                  post.type == 'text' ? 'story' : 'image'
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "media" },
+              _react2.default.createElement("div", {
+                className: "" + (post.type == 'text' ? 'story' : 'image'),
+                style: {
+                  background: 'url("https://t3.ftcdn.net/jpg/01/52/17/06/240_F_152170627_nD1vV4VzKURo8O9kU3XdNdvT6qA4ascE.jpg")',
+                  backgroundPosition: 'center center',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: 'cover'
+                }
+              })
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "padding-container" },
+              _react2.default.createElement(
+                "div",
+                { className: "grey-container" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "update-info" },
+                  _react2.default.createElement(
+                    "h3",
+                    null,
+                    " How to become a developer?"
+                  ),
+                  _react2.default.createElement(
+                    "p",
+                    null,
+                    post.content
+                  )
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "update-stats" },
+                  _react2.default.createElement(
+                    "div",
+                    { className: "icon-section" },
+                    _react2.default.createElement(
+                      "div",
+                      { className: "like-circle" },
+                      _react2.default.createElement("i", { className: "fas fa-thumbs-up" })
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "other-users" },
+                    "Mike and 40 others liked Update"
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "comment-stats" },
+                    "5 Comments"
+                  )
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "compose-comment" },
+                  _react2.default.createElement("i", { className: "fas fa-comment" }),
+                  _react2.default.createElement("textarea", { name: "name", rows: 8, cols: 80, defaultValue: "" }),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "buttons" },
+                    _react2.default.createElement(
+                      "div",
+                      { className: "repost-btn" },
+                      _react2.default.createElement("i", { className: "fas fa-redo" })
+                    ),
+                    _react2.default.createElement(
+                      "div",
+                      { className: "like-btn" },
+                      _react2.default.createElement("i", { className: "fas fa-thumbs-up" })
+                    )
+                  )
+                )
+              )
+            )
+          );
+        });
+      }
+    };
+
+    _this.state = {
+      name: "Remy"
+    };
+    return _this;
+  }
+
+  _createClass(Posts, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "section",
+        { id: "posts" },
+        this.showLatestPosts()
+      );
+    }
+  }]);
+
+  return Posts;
+}(_react.Component);
+
+exports.default = Posts;
+
+
+var app = document.getElementById("app");
+
+/***/ }),
+
+/***/ 248:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(18);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(29);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _reactRouterDom = __webpack_require__(111);
+
+var _axios = __webpack_require__(85);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _ComposeSection = __webpack_require__(109);
+
+var _ComposeSection2 = _interopRequireDefault(_ComposeSection);
+
+var _Posts = __webpack_require__(110);
+
+var _Posts2 = _interopRequireDefault(_Posts);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Home = function (_Component) {
+  _inherits(Home, _Component);
+
+  function Home() {
+    _classCallCheck(this, Home);
+
+    var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this));
+
+    _this.state = {
+      name: "Remy"
+    };
+    return _this;
+  }
+
+  _createClass(Home, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      var _this2 = this;
+
+      this.setState({
+        initialData: this.props.initialData
+      }, function () {
+        console.log(_this2.state);
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        { className: "content-area" },
+        _react2.default.createElement(_ComposeSection2.default, {
+          initialData: this.state.initialData == undefined ? "loading" : this.state.initialData
+        }),
+        _react2.default.createElement(_Posts2.default, { initialData: this.state.initialData == undefined ? "loading" : this.state.initialData })
+      );
+    }
+  }]);
+
+  return Home;
+}(_react.Component);
+
+exports.default = Home;
+
+/***/ }),
+
+/***/ 249:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(18);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(29);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -290,7 +558,7 @@ var app = document.getElementById("app");
 
 /***/ }),
 
-/***/ 242:
+/***/ 250:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -302,11 +570,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(40);
+var _react = __webpack_require__(18);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(41);
+var _reactDom = __webpack_require__(29);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -379,7 +647,7 @@ var app = document.getElementById("app");
 
 /***/ }),
 
-/***/ 243:
+/***/ 251:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -391,11 +659,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(40);
+var _react = __webpack_require__(18);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(41);
+var _reactDom = __webpack_require__(29);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -919,7 +1187,7 @@ var app = document.getElementById("app");
 
 /***/ }),
 
-/***/ 244:
+/***/ 252:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -931,13 +1199,27 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(40);
+var _react = __webpack_require__(18);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(41);
+var _reactDom = __webpack_require__(29);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _reactRouterDom = __webpack_require__(111);
+
+var _axios = __webpack_require__(85);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _ComposeSection = __webpack_require__(109);
+
+var _ComposeSection2 = _interopRequireDefault(_ComposeSection);
+
+var _Posts = __webpack_require__(110);
+
+var _Posts2 = _interopRequireDefault(_Posts);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -947,130 +1229,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Posts = function (_Component) {
-  _inherits(Posts, _Component);
+var Profile = function (_Component) {
+  _inherits(Profile, _Component);
 
-  function Posts() {
-    _classCallCheck(this, Posts);
+  function Profile() {
+    _classCallCheck(this, Profile);
 
-    var _this = _possibleConstructorReturn(this, (Posts.__proto__ || Object.getPrototypeOf(Posts)).call(this));
-
-    _this.clickedBtn = function () {
-      console.log("swag");
-    };
-
-    _this.showLatestPosts = function () {
-      if (_this.props.initialData.latestPosts != undefined) {
-        return _this.props.initialData.latestPosts.map(function (item) {
-          var post = item.posts;
-          var user = item.users;
-          return _react2.default.createElement(
-            "div",
-            { className: "update-container" },
-            _react2.default.createElement(
-              "div",
-              { className: "author-info" },
-              _react2.default.createElement("a", { href: "#", className: "user-img", style: { backgroundImage: "url('" + user.profile_img + "')" } }),
-              _react2.default.createElement(
-                "div",
-                { className: "info" },
-                _react2.default.createElement(
-                  "a",
-                  { href: "/profile" },
-                  user.first_name + " " + user.last_name,
-                  " "
-                ),
-                " shared a ",
-                _react2.default.createElement(
-                  "a",
-                  { href: "#" },
-                  " ",
-                  post.type == 'text' ? 'story' : 'image'
-                )
-              )
-            ),
-            _react2.default.createElement(
-              "div",
-              { className: "media" },
-              _react2.default.createElement("div", {
-                className: "" + (post.type == 'text' ? 'story' : 'image'),
-                style: {
-                  background: 'url("https://t3.ftcdn.net/jpg/01/52/17/06/240_F_152170627_nD1vV4VzKURo8O9kU3XdNdvT6qA4ascE.jpg")',
-                  backgroundPosition: 'center center',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: 'cover'
-                }
-              })
-            ),
-            _react2.default.createElement(
-              "div",
-              { className: "padding-container" },
-              _react2.default.createElement(
-                "div",
-                { className: "grey-container" },
-                _react2.default.createElement(
-                  "div",
-                  { className: "update-info" },
-                  _react2.default.createElement(
-                    "h3",
-                    null,
-                    " How to become a developer?"
-                  ),
-                  _react2.default.createElement(
-                    "p",
-                    null,
-                    post.content
-                  )
-                ),
-                _react2.default.createElement(
-                  "div",
-                  { className: "update-stats" },
-                  _react2.default.createElement(
-                    "div",
-                    { className: "icon-section" },
-                    _react2.default.createElement(
-                      "div",
-                      { className: "like-circle" },
-                      _react2.default.createElement("i", { className: "fas fa-thumbs-up" })
-                    )
-                  ),
-                  _react2.default.createElement(
-                    "div",
-                    { className: "other-users" },
-                    "Mike and 40 others liked Update"
-                  ),
-                  _react2.default.createElement(
-                    "div",
-                    { className: "comment-stats" },
-                    "5 Comments"
-                  )
-                ),
-                _react2.default.createElement(
-                  "div",
-                  { className: "compose-comment" },
-                  _react2.default.createElement("i", { className: "fas fa-comment" }),
-                  _react2.default.createElement("textarea", { name: "name", rows: 8, cols: 80, defaultValue: "" }),
-                  _react2.default.createElement(
-                    "div",
-                    { className: "buttons" },
-                    _react2.default.createElement(
-                      "div",
-                      { className: "repost-btn" },
-                      _react2.default.createElement("i", { className: "fas fa-redo" })
-                    ),
-                    _react2.default.createElement(
-                      "div",
-                      { className: "like-btn" },
-                      _react2.default.createElement("i", { className: "fas fa-thumbs-up" })
-                    )
-                  )
-                )
-              )
-            )
-          );
-        });
-      }
-    };
+    var _this = _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).call(this));
 
     _this.state = {
       name: "Remy"
@@ -1078,28 +1243,36 @@ var Posts = function (_Component) {
     return _this;
   }
 
-  _createClass(Posts, [{
+  _createClass(Profile, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      var _this2 = this;
+
+      this.setState({
+        initialData: this.props.initialData
+      }, function () {
+        console.log(_this2.props);
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return _react2.default.createElement(
-        "section",
-        { id: "posts" },
-        this.showLatestPosts()
+        "div",
+        { className: "content-area" },
+        "This is the user profile"
       );
     }
   }]);
 
-  return Posts;
+  return Profile;
 }(_react.Component);
 
-exports.default = Posts;
-
-
-var app = document.getElementById("app");
+exports.default = Profile;
 
 /***/ }),
 
-/***/ 245:
+/***/ 253:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1111,11 +1284,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(40);
+var _react = __webpack_require__(18);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(41);
+var _reactDom = __webpack_require__(29);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -1204,7 +1377,7 @@ var app = document.getElementById("app");
 
 /***/ }),
 
-/***/ 265:
+/***/ 273:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1212,39 +1385,49 @@ var app = document.getElementById("app");
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(40);
+var _react = __webpack_require__(18);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(41);
+var _reactDom = __webpack_require__(29);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _axios = __webpack_require__(151);
+var _reactRouterDom = __webpack_require__(111);
+
+var _axios = __webpack_require__(85);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _LeftMenu = __webpack_require__(241);
+var _Home = __webpack_require__(248);
+
+var _Home2 = _interopRequireDefault(_Home);
+
+var _Profile = __webpack_require__(252);
+
+var _Profile2 = _interopRequireDefault(_Profile);
+
+var _LeftMenu = __webpack_require__(249);
 
 var _LeftMenu2 = _interopRequireDefault(_LeftMenu);
 
-var _Messenger = __webpack_require__(243);
+var _Messenger = __webpack_require__(251);
 
 var _Messenger2 = _interopRequireDefault(_Messenger);
 
-var _SearchHeader = __webpack_require__(245);
+var _SearchHeader = __webpack_require__(253);
 
 var _SearchHeader2 = _interopRequireDefault(_SearchHeader);
 
-var _ComposeSection = __webpack_require__(240);
+var _ComposeSection = __webpack_require__(109);
 
 var _ComposeSection2 = _interopRequireDefault(_ComposeSection);
 
-var _Posts = __webpack_require__(244);
+var _Posts = __webpack_require__(110);
 
 var _Posts2 = _interopRequireDefault(_Posts);
 
-var _LoadingComp = __webpack_require__(242);
+var _LoadingComp = __webpack_require__(250);
 
 var _LoadingComp2 = _interopRequireDefault(_LoadingComp);
 
@@ -1325,29 +1508,35 @@ var Layout = function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       return _react2.default.createElement(
-        "div",
-        { className: "app-container home-page" },
-        _react2.default.createElement(_LoadingComp2.default, {
-          initialData: this.state.initialData == undefined ? "loading" : this.state.initialData
-        }),
-        _react2.default.createElement(_LeftMenu2.default, {
-          initialData: this.state.initialData == undefined ? "loading" : this.state.initialData
-        }),
+        _reactRouterDom.BrowserRouter,
+        null,
         _react2.default.createElement(
-          "section",
-          { id: "content-container" },
-          _react2.default.createElement(_SearchHeader2.default, null),
+          "div",
+          { className: "app-container home-page" },
+          _react2.default.createElement(_LoadingComp2.default, {
+            initialData: this.state.initialData == undefined ? "loading" : this.state.initialData
+          }),
+          _react2.default.createElement(_LeftMenu2.default, {
+            initialData: this.state.initialData == undefined ? "loading" : this.state.initialData
+          }),
           _react2.default.createElement(
-            "div",
-            { className: "content-area" },
-            _react2.default.createElement(_ComposeSection2.default, {
-              initialData: this.state.initialData == undefined ? "loading" : this.state.initialData
-            }),
-            _react2.default.createElement(_Posts2.default, { initialData: this.state.initialData == undefined ? "loading" : this.state.initialData })
-          )
-        ),
-        _react2.default.createElement(_Messenger2.default, null)
+            "section",
+            { id: "content-container" },
+            _react2.default.createElement(_SearchHeader2.default, null),
+            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/", component: function component(props) {
+                return _react2.default.createElement(_Home2.default, { routeProps: props,
+                  initialData: _this2.state.initialData == undefined ? 'loading' : _this2.state.initialData });
+              } }),
+            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/profile", component: function component(props) {
+                return _react2.default.createElement(_Profile2.default, { routeProps: props,
+                  initialData: _this2.state.initialData == undefined ? 'loading' : _this2.state.initialData });
+              } })
+          ),
+          _react2.default.createElement(_Messenger2.default, null)
+        )
       );
     }
   }]);
@@ -1361,4 +1550,4 @@ _reactDom2.default.render(_react2.default.createElement(Layout, null), app);
 
 /***/ })
 
-},[265]);
+},[273]);
