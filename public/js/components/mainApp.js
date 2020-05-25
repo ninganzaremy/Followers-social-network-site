@@ -1223,6 +1223,8 @@ var _Posts2 = _interopRequireDefault(_Posts);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -1246,41 +1248,96 @@ var Profile = function (_Component) {
   _createClass(Profile, [{
     key: "componentWillMount",
     value: function componentWillMount() {
-      var _this2 = this;
+      var _props$routeProps = this.props.routeProps,
+          match = _props$routeProps.match,
+          location = _props$routeProps.location,
+          history = _props$routeProps.history;
 
-      this.setState({
-        initialData: this.props.initialData
-      }, function () {
-        console.log(_this2.props);
-      });
+      var self = this;
+
+      var getUser = function () {
+        var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+          var userProfile;
+          return regeneratorRuntime.wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  _context.prev = 0;
+                  _context.next = 3;
+                  return _axios2.default.get("/api/user/" + match.params.id);
+
+                case 3:
+                  userProfile = _context.sent;
+
+                  self.setState({
+                    initialData: self.props.initialData,
+                    userProfile: userProfile.data[0]
+                  }, function () {
+                    console.log(self.state);
+                  });
+                  _context.next = 10;
+                  break;
+
+                case 7:
+                  _context.prev = 7;
+                  _context.t0 = _context["catch"](0);
+
+                  console.log(_context.t0);
+
+                case 10:
+                case "end":
+                  return _context.stop();
+              }
+            }
+          }, _callee, this, [[0, 7]]);
+        }));
+
+        return function getUser() {
+          return _ref.apply(this, arguments);
+        };
+      }();
+      getUser();
     }
   }, {
     key: "render",
     value: function render() {
-      return _react2.default.createElement(
-        "div",
-        { className: "content-area profile-page" },
-        _react2.default.createElement(
+      if (this.state.userProfile != undefined) {
+        var _state$userProfile = this.state.userProfile,
+            first_name = _state$userProfile.first_name,
+            last_name = _state$userProfile.last_name,
+            profile_img = _state$userProfile.profile_img;
+
+        return _react2.default.createElement(
           "div",
-          { className: "user-img" },
-          _react2.default.createElement("img", { src: "" }),
-          " "
-        ),
-        _react2.default.createElement(
-          "div",
-          { className: "info" },
+          { className: "content-area profile-page" },
           _react2.default.createElement(
-            "h1",
-            null,
-            " Remy Ninga"
+            "div",
+            { className: "user-img" },
+            _react2.default.createElement("img", { src: "" + profile_img })
           ),
           _react2.default.createElement(
             "div",
-            { className: "follow-btn" },
-            "Follow"
+            { className: "info" },
+            _react2.default.createElement(
+              "h1",
+              null,
+              " ",
+              first_name + " " + last_name
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "follow-btn" },
+              "Follow"
+            )
           )
-        )
-      );
+        );
+      } else {
+        return _react2.default.createElement(
+          "div",
+          { className: "content-area profile-page" },
+          "loading"
+        );
+      }
     }
   }]);
 
