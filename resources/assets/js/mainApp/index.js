@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import{
-  BrowserRouter as Router,
-  Route,
-  NavLink
-} from 'react-router-dom'
+import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import axios from "axios";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
@@ -50,32 +46,55 @@ class Layout extends Component {
   render() {
     return (
       <Router>
-      <div className="app-container home-page">
-        <LoadingComp
-          initialData={
-            (this.state.initialData == undefined)
-              ? "loading"
-              : this.state.initialData
-          }
-        />
-        <LeftMenu
-          initialData={
-            (this.state.initialData == undefined)
-              ? "loading"
-              : this.state.initialData
-          }
-        />
-        <section id="content-container">
-          <SearchHeader />
-          <Route exact path ="/" component={(props) => <Home routeProps ={props}
-          initialData={(this.state.initialData ==undefined) ? 'loading' : this.state.initialData} />} />
+        <div className="app-container home-page">
+          <LoadingComp
+            initialData={
+              this.state.initialData == undefined
+                ? "loading"
+                : this.state.initialData
+            }
+          />
+          <LeftMenu
+            initialData={
+              this.state.initialData == undefined
+                ? "loading"
+                : this.state.initialData
+            }
+          />
+          <section id="content-container">
+            <SearchHeader />
+            <Route
+              exact
+              path="/"
+              component={(props) => (
+                <Home
+                  routeProps={props}
+                  initialData={
+                    this.state.initialData == undefined
+                      ? "loading"
+                      : this.state.initialData
+                  }
+                />
+              )}
+            />
 
-          <Route exact path ="/profile/:id" component={(props) => <Profile routeProps ={props}
-          initialData={(this.state.initialData ==undefined) ? 'loading' : this.state.initialData} />} />
-
-        </section>
-        <Messenger />
-      </div>
+            <Route
+              exact
+              path="/profile/:id"
+              component={(props) => (
+                <Profile
+                  routeProps={props}
+                  initialData={
+                    this.state.initialData == undefined
+                      ? "loading"
+                      : this.state.initialData
+                  }
+                />
+              )}
+            />
+          </section>
+          <Messenger />
+        </div>
       </Router>
     );
   }

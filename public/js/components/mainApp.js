@@ -192,7 +192,11 @@ var Posts = function (_Component) {
             _react2.default.createElement(
               "div",
               { className: "author-info" },
-              _react2.default.createElement("a", { href: "#", className: "user-img", style: { backgroundImage: "url('" + user.profile_img + "')" } }),
+              _react2.default.createElement("a", {
+                href: "#",
+                className: "user-img",
+                style: { backgroundImage: "url('" + user.profile_img + "')" }
+              }),
               _react2.default.createElement(
                 "div",
                 { className: "info" },
@@ -202,12 +206,14 @@ var Posts = function (_Component) {
                   user.first_name + " " + user.last_name,
                   " "
                 ),
-                " shared a ",
+                " ",
+                "shared a",
+                " ",
                 _react2.default.createElement(
                   "a",
                   { href: "#" },
                   " ",
-                  post.type == 'text' ? 'story' : 'image'
+                  post.type == "text" ? "story" : "image"
                 )
               )
             ),
@@ -215,12 +221,12 @@ var Posts = function (_Component) {
               "div",
               { className: "media" },
               _react2.default.createElement("div", {
-                className: "" + (post.type == 'text' ? 'story' : 'image'),
+                className: "" + (post.type == "text" ? "story" : "image"),
                 style: {
                   background: 'url("https://t3.ftcdn.net/jpg/01/52/17/06/240_F_152170627_nD1vV4VzKURo8O9kU3XdNdvT6qA4ascE.jpg")',
-                  backgroundPosition: 'center center',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: 'cover'
+                  backgroundPosition: "center center",
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "cover"
                 }
               })
             ),
@@ -1235,9 +1241,79 @@ var Profile = function (_Component) {
   _inherits(Profile, _Component);
 
   function Profile() {
+    var _this2 = this;
+
     _classCallCheck(this, Profile);
 
     var _this = _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).call(this));
+
+    _this.followUser = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+      var _this$props$routeProp, match, location, history, self, userProfile, _userProfile;
+
+      return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _this$props$routeProp = _this.props.routeProps, match = _this$props$routeProp.match, location = _this$props$routeProp.location, history = _this$props$routeProp.history;
+              self = _this;
+
+              if (!_this.state.following) {
+                _context.next = 16;
+                break;
+              }
+
+              _context.prev = 3;
+              _context.next = 6;
+              return _axios2.default.get("/api/user/" + match.params.id + "/unfollow");
+
+            case 6:
+              userProfile = _context.sent;
+
+              self.setState({
+                following: !self.state.following
+              });
+              console.log(userProfile.data);
+              _context.next = 14;
+              break;
+
+            case 11:
+              _context.prev = 11;
+              _context.t0 = _context["catch"](3);
+
+              console.log(_context.t0);
+
+            case 14:
+              _context.next = 27;
+              break;
+
+            case 16:
+              _context.prev = 16;
+              _context.next = 19;
+              return _axios2.default.get("/api/user/" + match.params.id + "/follow");
+
+            case 19:
+              _userProfile = _context.sent;
+
+              self.setState({
+                following: !self.state.following
+              });
+              console.log(_userProfile.data);
+              _context.next = 27;
+              break;
+
+            case 24:
+              _context.prev = 24;
+              _context.t1 = _context["catch"](16);
+
+              console.log(_context.t1);
+
+            case 27:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, _this2, [[3, 11], [16, 24]]);
+    }));
 
     _this.state = {
       name: "Remy"
@@ -1256,44 +1332,45 @@ var Profile = function (_Component) {
       var self = this;
 
       var getUser = function () {
-        var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+        var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
           var userProfile;
-          return regeneratorRuntime.wrap(function _callee$(_context) {
+          return regeneratorRuntime.wrap(function _callee2$(_context2) {
             while (1) {
-              switch (_context.prev = _context.next) {
+              switch (_context2.prev = _context2.next) {
                 case 0:
-                  _context.prev = 0;
-                  _context.next = 3;
+                  _context2.prev = 0;
+                  _context2.next = 3;
                   return _axios2.default.get("/api/user/" + match.params.id);
 
                 case 3:
-                  userProfile = _context.sent;
+                  userProfile = _context2.sent;
 
                   self.setState({
                     initialData: self.props.initialData,
-                    userProfile: userProfile.data[0]
+                    userProfile: userProfile.data.user[0],
+                    following: userProfile.data.following
                   }, function () {
                     console.log(self.state);
                   });
-                  _context.next = 10;
+                  _context2.next = 10;
                   break;
 
                 case 7:
-                  _context.prev = 7;
-                  _context.t0 = _context["catch"](0);
+                  _context2.prev = 7;
+                  _context2.t0 = _context2["catch"](0);
 
-                  console.log(_context.t0);
+                  console.log(_context2.t0);
 
                 case 10:
                 case "end":
-                  return _context.stop();
+                  return _context2.stop();
               }
             }
-          }, _callee, this, [[0, 7]]);
+          }, _callee2, this, [[0, 7]]);
         }));
 
         return function getUser() {
-          return _ref.apply(this, arguments);
+          return _ref2.apply(this, arguments);
         };
       }();
       getUser();
@@ -1326,8 +1403,8 @@ var Profile = function (_Component) {
             ),
             _react2.default.createElement(
               "div",
-              { className: "follow-btn" },
-              "Follow"
+              { className: "follow-btn", onClick: this.followUser },
+              this.state.following ? "Unfollow" : "Follow"
             )
           )
         );
@@ -1602,14 +1679,26 @@ var Layout = function (_Component) {
             "section",
             { id: "content-container" },
             _react2.default.createElement(_SearchHeader2.default, null),
-            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/", component: function component(props) {
-                return _react2.default.createElement(_Home2.default, { routeProps: props,
-                  initialData: _this2.state.initialData == undefined ? 'loading' : _this2.state.initialData });
-              } }),
-            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/profile/:id", component: function component(props) {
-                return _react2.default.createElement(_Profile2.default, { routeProps: props,
-                  initialData: _this2.state.initialData == undefined ? 'loading' : _this2.state.initialData });
-              } })
+            _react2.default.createElement(_reactRouterDom.Route, {
+              exact: true,
+              path: "/",
+              component: function component(props) {
+                return _react2.default.createElement(_Home2.default, {
+                  routeProps: props,
+                  initialData: _this2.state.initialData == undefined ? "loading" : _this2.state.initialData
+                });
+              }
+            }),
+            _react2.default.createElement(_reactRouterDom.Route, {
+              exact: true,
+              path: "/profile/:id",
+              component: function component(props) {
+                return _react2.default.createElement(_Profile2.default, {
+                  routeProps: props,
+                  initialData: _this2.state.initialData == undefined ? "loading" : _this2.state.initialData
+                });
+              }
+            })
           ),
           _react2.default.createElement(_Messenger2.default, null)
         )

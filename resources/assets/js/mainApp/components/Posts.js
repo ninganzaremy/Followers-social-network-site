@@ -13,26 +13,32 @@ export default class Posts extends Component {
   };
   showLatestPosts = () => {
     if (this.props.initialData.latestPosts != undefined) {
-      return this.props.initialData.latestPosts.map((item,index) => {
-        let post = item.posts
-        let user = item.users
-        return (<div className="update-container" key={index}>
+      return this.props.initialData.latestPosts.map((item, index) => {
+        let post = item.posts;
+        let user = item.users;
+        return (
+          <div className="update-container" key={index}>
             <div className="author-info">
-              <a href="#" className="user-img" style={{backgroundImage:
-              `url('${user.profile_img}')`}} />
+              <a
+                href="#"
+                className="user-img"
+                style={{ backgroundImage: `url('${user.profile_img}')` }}
+              />
               <div className="info">
-                <a href="/profile">{`${user.first_name} ${user.last_name}`} </a> shared a <a href="#"> {(post.type == 'text') ? 'story' : 'image'}</a>
+                <a href="/profile">{`${user.first_name} ${user.last_name}`} </a>{" "}
+                shared a{" "}
+                <a href="#"> {post.type == "text" ? "story" : "image"}</a>
               </div>
             </div>
             <div className="media">
               <div
-                className={`${(post.type == 'text') ? 'story' : 'image'}`}
+                className={`${post.type == "text" ? "story" : "image"}`}
                 style={{
                   background:
                     'url("https://t3.ftcdn.net/jpg/01/52/17/06/240_F_152170627_nD1vV4VzKURo8O9kU3XdNdvT6qA4ascE.jpg")',
-                  backgroundPosition: 'center center',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: 'cover'
+                  backgroundPosition: "center center",
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "cover",
                 }}
               />
             </div>
@@ -40,9 +46,7 @@ export default class Posts extends Component {
               <div className="grey-container">
                 <div className="update-info">
                   <h3> How to become a developer?</h3>
-                  <p>
-                  {post.content}
-                  </p>
+                  <p>{post.content}</p>
                 </div>
                 <div className="update-stats">
                   <div className="icon-section">
@@ -75,11 +79,7 @@ export default class Posts extends Component {
     }
   };
   render() {
-    return (
-      <section id="posts">
-      {this.showLatestPosts()}
-      </section>
-    )
+    return <section id="posts">{this.showLatestPosts()}</section>;
   }
 }
 
